@@ -1,25 +1,93 @@
-'use strict';
+"use strict";
 
-// arguments object is no longer bound with arrow functions
+console.log("app.js is running");
 
-var add = function add(a, b) {
-  // console.log(arguments)
-  return a + b;
+// JSX - JavaScript XML
+
+var app = {
+  title: "Indecision App!",
+  subTitle: "This is some info for you!",
+  options: ["One", "Two"]
 };
 
-console.log(add(55, 10));
+var template = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    app.title
+  ),
+  app.subTitle && React.createElement(
+    "p",
+    null,
+    app.subTitle
+  ),
+  React.createElement(
+    "p",
+    null,
+    app.options.length > 0 ? "Here are your options" : "No options"
+  ),
+  React.createElement(
+    "ol",
+    null,
+    React.createElement(
+      "li",
+      null,
+      "list 1"
+    ),
+    React.createElement(
+      "li",
+      null,
+      "list 2"
+    )
+  )
+);
 
-// this keyword - no longer bound
-
-var user = {
-  name: 'andrew',
-  cities: ['philadelphia', 'new york', "dublin"],
-  printPlacesLived: function printPlacesLived() {
-    var _this = this;
-
-    this.cities.forEach(function (city) {
-      console.log(_this.name + ' has lived in ' + city);
-    });
-  }
+var count = 0;
+var addOne = function addOne() {
+  count++;
+  renderCounterApp();
 };
-user.printPlacesLived();
+var minusOne = function minusOne() {
+  count--;
+  renderCounterApp();
+};
+var reset = function reset() {
+  count = 0;
+  renderCounterApp();
+};
+
+var appRoot = document.getElementById('app');
+
+var renderCounterApp = function renderCounterApp() {
+  var templateTwo = React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "h1",
+      null,
+      "Count: ",
+      count
+    ),
+    React.createElement(
+      "button",
+      { onClick: addOne },
+      "+1"
+    ),
+    React.createElement(
+      "button",
+      { onClick: minusOne },
+      "-1"
+    ),
+    React.createElement(
+      "button",
+      { onClick: reset },
+      "reset"
+    )
+  );
+
+  ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();
