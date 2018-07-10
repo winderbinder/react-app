@@ -25,16 +25,10 @@ handleMinusOne() {
 };
 
 handleReset() {
-  // this.setState((prevState) => {
-  //   return {
-  //     count: 0
-  //   };
-  // });
-  this.setState({
-    count: 0
-  });
-  this.setState({
-    count: this.state.count + 1
+  this.setState(() => { 
+    return {
+      count: 0
+    }
   });
 };
 
@@ -55,6 +49,7 @@ ReactDOM.render(<Counter />, document.getElementById("app"))
 
 
 // var nameVar = "Andrew";
+
 // nameVar = "Mike";
 // console.log("nameVar", nameVar);
 
