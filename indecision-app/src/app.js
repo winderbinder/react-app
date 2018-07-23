@@ -9,15 +9,22 @@ class IndecisionApp extends React.Component {
     options: props.options
    };
 }
+  componentDidMount() {
+    console.log("component did mount!")
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log("component did update!")
+  }
+  componentWillUnmount() {
+    console.log("component did unmount!")
+  }
   handleDeleteOptions() {
     this.setState (() => ({ options: [] }))
   }
   handleDeleteOption(optionToRemove) {
     this.setState((prevState) => ({
-      options: prevState.options.filter((option) => {
-        return optionToRemove !== option;
-      }) 
-    }))
+      options: prevState.options.filter((option) => optionToRemove !== option)
+    }));
   }
   handlePick() {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
