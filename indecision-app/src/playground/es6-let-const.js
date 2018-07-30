@@ -9,6 +9,26 @@ class Counter extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const stringCount = localStorage.getItem("count");
+    const count = parseInt(stringCount, 10);
+
+    if (!isNaN(count)) {
+      this.setState(() => ({ count }))
+    }
+
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count !== this.state.count) {
+      localStorage.setItem("count", this.state.count);
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("component did unmount");
+  }
+
 handleAddOne() {
   this.setState((prevState) => {
     return {
@@ -49,7 +69,7 @@ handleReset() {
     count: 0
   }
 
-ReactDOM.render(<Counter count={[25]}/>, document.getElementById("app"))
+ReactDOM.render(<Counter />, document.getElementById("app"))
 
 
 
