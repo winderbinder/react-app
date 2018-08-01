@@ -190,4 +190,3 @@ class AddOption extends React.Component {
 
 ReactDOM.render(<IndecisionApp options={["option 1", "option 2"]}/>, document.getElementById("app"));
 
-
