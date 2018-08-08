@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-console.log("hello there!!");
+throw new Error("Module parse failed: /Users/mac/CodeProjects/react-course-projects/indecision-app/src/playground/app.js Unexpected token (1:41)\nYou may need an appropriate loader to handle this file type.\n| import { adult, person } from 'person.js',\n| \n| console.log(\"hello there!!\");");
 
 /***/ })
 /******/ ]);
