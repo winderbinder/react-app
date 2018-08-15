@@ -15,3 +15,4 @@ module: {
   }]
  }
 };
+devtool: 'cheap-module-eval-source-map'
